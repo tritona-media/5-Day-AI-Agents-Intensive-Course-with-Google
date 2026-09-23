@@ -1,6 +1,6 @@
 import asyncio
 
-from google.adk.agents import Agent
+from google.adk.agents import LlmAgent
 from google.adk.models.google_llm import Gemini
 from google.adk.runners import InMemoryRunner
 from google.adk.tools import google_search
@@ -16,14 +16,21 @@ retry_config=types.HttpRetryOptions(
     http_status_codes=[429, 500, 503, 504] # Retry on these HTTP errors
 )
 
-root_agent = Agent(
-    name="helpful_assistant",
+root_agent = LlmAgent(
+    name="research_assistant",
     model=Gemini(
-        model="gemini-3.5-flash-lite",
-        retry_options=retry_config
+        model="gemini-3.5-flash",
+        retry_options=retry_config,
     ),
-    description="A simple agent that can answer general questions.",
-    instruction="You are a helpful assistant. Use Google Search for current info or if unsure.",
+    description="An agent that assists with research tasks.",
+    instruction=(
+        "You are a research assistant. "
+        "For every search result, provide:"
+        "- The title"
+        "- A one-sentence summary"
+        "- The URL"
+        "Return the results as a bulleted list."
+    ),
     tools=[google_search],
 )
 
@@ -31,7 +38,7 @@ runner = InMemoryRunner(agent=root_agent)
 
 async def main():
     response = await runner.run_debug(
-        "Who won the last soccer world cup?"
+        "Search for the latest breaking news in AI."
     )
 
 if __name__ == "__main__":
