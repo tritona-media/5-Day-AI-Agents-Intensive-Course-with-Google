@@ -1,0 +1,58 @@
+<svg width="820" height="1100" viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Runner execution loop</title>
+  <desc id="desc">Runner execution loop: user prompt, runner, model, tool call, result feedback, and final answer when no more tool calls are needed.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f3f73"/>
+    </marker>
+    <style>
+      .title { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #1f2a44; }
+      .label { font: 600 16px 'Segoe UI', Arial, sans-serif; fill: #1f2a44; }
+      .small { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #40527c; }
+      .box { fill: #eef4ff; stroke: #3e6de6; stroke-width: 1.8; }
+      .decision { fill: #fff8ec; stroke: #d68d1c; stroke-width: 1.8; }
+      .terminal { fill: #edf9f1; stroke: #1b8d5b; stroke-width: 1.8; }
+      .tool { fill: #f3edff; stroke: #7d5ce6; stroke-width: 1.8; }
+      .arrow { stroke: #2f3f73; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="410" y="50" text-anchor="middle" class="title">Runner Execution Loop</text>
+
+  <rect x="315" y="80" width="190" height="60" rx="12" class="box"/>
+  <text x="410" y="118" text-anchor="middle" class="label">User Prompt</text>
+
+  <rect x="315" y="180" width="190" height="60" rx="12" class="box"/>
+  <text x="410" y="218" text-anchor="middle" class="label">Runner</text>
+
+  <rect x="285" y="285" width="250" height="68" rx="12" class="box"/>
+  <text x="410" y="328" text-anchor="middle" class="label">Model</text>
+
+  <polygon points="410,410 300,450 410,490 520,450" class="decision"/>
+  <text x="410" y="456" text-anchor="middle" class="small">Tool call?</text>
+
+  <rect x="285" y="540" width="250" height="76" rx="12" class="tool"/>
+  <text x="410" y="580" text-anchor="middle" class="label">Runner executes tool</text>
+  <text x="410" y="602" text-anchor="middle" class="small">tool call</text>
+
+  <rect x="285" y="670" width="250" height="76" rx="12" class="tool"/>
+  <text x="410" y="710" text-anchor="middle" class="label">Tool result</text>
+  <text x="410" y="732" text-anchor="middle" class="small">returned to model</text>
+
+  <rect x="575" y="670" width="165" height="76" rx="12" class="terminal"/>
+  <text x="657" y="710" text-anchor="middle" class="label">Final answer</text>
+  <text x="657" y="732" text-anchor="middle" class="small">no more tool call</text>
+
+  <path d="M410 140 V180" class="arrow"/>
+  <path d="M410 240 V285" class="arrow"/>
+  <path d="M410 353 V410" class="arrow"/>
+  <path d="M410 490 V540" class="arrow"/>
+  <text x="435" y="486" class="small">Yes</text>
+
+  <path d="M410 616 V670" class="arrow"/>
+  <path d="M410 746 C410 820, 410 860, 250 860 L250 330 L285 330" class="arrow"/>
+  <text x="275" y="845" class="small">loop back</text>
+
+  <path d="M520 450 H650 V670" class="arrow"/>
+  <text x="555" y="520" class="small">No</text>
+</svg>
