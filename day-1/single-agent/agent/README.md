@@ -57,9 +57,9 @@ When the model decides to call a tool, the runner executes the tool and feeds th
 
 This loop continues until the model produces a final answer or the execution otherwise terminates.
 
-![Runner execution loop](../assets/runner-execution-loop.svg)
+![Runner execution loop](./assets/runner-execution-loop.svg)
 
-[Open the editable draw.io source](../assets/runner-execution-loop.drawio)
+[Open the editable draw.io source](./assets/runner-execution-loop.drawio)
 
 The runner can  run in debug (`run_debug()`) or production mode (`run()`). In debug mode you will see what the agent is doing behind the scenes.
 

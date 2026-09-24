@@ -1,7 +1,7 @@
 # Day 1 - Introduction to Agents
 
 ## Single Agent
-See documentation [here](./single-agent/README.md)
+See documentation [here](./single-agent/agent/README.md)
 
 ## Multi Agent
 See documentation [here](./multi-agent/README.md)

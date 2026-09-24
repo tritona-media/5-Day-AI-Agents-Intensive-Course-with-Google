@@ -3,7 +3,7 @@ This course is about building single and multi agent systems encompassing archit
 
 It is divided into 5 days. Each day covers a differnt topic.
 
-Day 1: Introduction to Agents
+[Day 1: Introduction to Agents](./day-1/README.md)
 
 Day 2: Agent Tools & Interoperability with Model Context Protocol (MCP)
 
