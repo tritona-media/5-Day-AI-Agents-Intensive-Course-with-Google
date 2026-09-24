@@ -1,0 +1,35 @@
+<svg width="760" height="420" viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Coordinator Agent Architecture</title>
+  <desc id="desc">A coordinator agent at the top sends arrows downward to research, coder, and writer agents.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#4b5563" />
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #1f2937; }
+      .label { font: 600 20px Arial, sans-serif; fill: #1f2937; }
+      .node { fill: #dbeafe; stroke: #3b82f6; stroke-width: 2; rx: 18; }
+      .subnode { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; rx: 18; }
+      .arrow { stroke: #4b5563; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="760" height="420" fill="#f8fafc"/>
+
+  <rect class="node" x="290" y="30" width="180" height="80"/>
+  <text class="label" x="380" y="78" text-anchor="middle">Coordinator Agent</text>
+
+  <rect class="subnode" x="40" y="220" width="170" height="90"/>
+  <text class="label" x="125" y="275" text-anchor="middle">Research</text>
+
+  <rect class="subnode" x="295" y="220" width="170" height="90"/>
+  <text class="label" x="380" y="275" text-anchor="middle">Coder</text>
+
+  <rect class="subnode" x="550" y="220" width="170" height="90"/>
+  <text class="label" x="635" y="275" text-anchor="middle">Writer</text>
+
+  <path class="arrow" d="M380 110 L380 220"/>
+  <path class="arrow" d="M380 110 L200 220"/>
+  <path class="arrow" d="M380 110 L635 220"/>
+</svg>
