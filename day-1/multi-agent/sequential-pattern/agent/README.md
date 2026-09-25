@@ -7,7 +7,7 @@ A sequential agent is created using the `google.adk.agents.SequentialAgent` clas
 
 This pattern is useful when a deterministic execution order is required, especially when each step depends on the previous step's output or when the workflow must follow a strict sequence.
 
-## Experimental Agent
+## Agent Experiments
 [source file](./agent_experiment.py)
 
 The `google.adk.agents.SequentialAgent` class is marked as deprecated. A newer approach is to model the flow as a graph of nodes and edges, similar to LangGraph, using the `google.adk.workflow.Workflow` class and its `edges` property.

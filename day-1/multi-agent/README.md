@@ -1,11 +1,11 @@
-# Multi Agent
-Imagine a person in a company who does everything from project management to software development to deployment and quality assurance.
+# Multi-Agent
+Imagine a single person in a company handling project management, software development, deployment, and quality assurance all at once.
 
-That would be too much for that person.´
+That would be overwhelming for one person.
 
-The same applies for agents. Instead of having a monolithic agent that does everything it is better to have a team of agents working together, each one specialized in a certain field.
+The same principle applies to AI agents. Instead of relying on a single monolithic agent to do everything, it is often more effective to use a team of specialized agents that collaborate on different tasks.
 
-In this chapter different multi agent architecture patterns are introduced with code examples:
+This chapter introduces several multi-agent architecture patterns with code examples:
 * [Coordinator pattern](./coordinator-pattern/agent/README.md)
 * [Sequential Workflow pattern](./sequential-pattern/agent/README.md)
 * [Parallel Workflow pattern](./parallel-pattern/agent/README.md)
