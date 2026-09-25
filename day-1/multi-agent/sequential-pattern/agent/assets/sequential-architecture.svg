@@ -1,0 +1,46 @@
+<svg width="1360" height="220" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sequential Agent Architecture</title>
+  <desc id="desc">Sequential flow from user request to OutlineAgent, WriterAgent, EditorAgent, and final blog post.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#666666" />
+    </marker>
+    <style>
+      .label { font: 600 14px Arial, sans-serif; fill: #333; }
+      .box-text { font: 700 18px Arial, sans-serif; fill: #1a1a1a; }
+      .user { fill: #f5f5f5; stroke: #666; stroke-width: 2; }
+      .outline { fill: #dae8fc; stroke: #6c8ebf; stroke-width: 2; }
+      .writer { fill: #d5e8d4; stroke: #82b366; stroke-width: 2; }
+      .editor { fill: #f8cecc; stroke: #b85450; stroke-width: 2; }
+      .final { fill: #fff2cc; stroke: #d6b656; stroke-width: 2; }
+      .link { stroke: #666666; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="40" y="70" width="180" height="80" rx="18" class="user"/>
+  <text x="130" y="116" text-anchor="middle" class="box-text">User Request</text>
+
+  <rect x="280" y="70" width="200" height="80" rx="18" class="outline"/>
+  <text x="380" y="116" text-anchor="middle" class="box-text">OutlineAgent</text>
+
+  <rect x="560" y="70" width="200" height="80" rx="18" class="writer"/>
+  <text x="660" y="116" text-anchor="middle" class="box-text">WriterAgent</text>
+
+  <rect x="840" y="70" width="200" height="80" rx="18" class="editor"/>
+  <text x="940" y="116" text-anchor="middle" class="box-text">EditorAgent</text>
+
+  <rect x="1120" y="70" width="200" height="80" rx="18" class="final"/>
+  <text x="1220" y="116" text-anchor="middle" class="box-text">Final Blog Post</text>
+
+  <path d="M220 110 H280" class="link"/>
+  <text x="250" y="100" text-anchor="middle" class="label">topic</text>
+
+  <path d="M480 110 H560" class="link"/>
+  <text x="520" y="100" text-anchor="middle" class="label">blog_outline</text>
+
+  <path d="M760 110 H840" class="link"/>
+  <text x="800" y="100" text-anchor="middle" class="label">blog_draft</text>
+
+  <path d="M1040 110 H1120" class="link"/>
+  <text x="1080" y="100" text-anchor="middle" class="label">final_blog</text>
+</svg>

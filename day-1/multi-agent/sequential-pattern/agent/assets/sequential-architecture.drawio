@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" modified="2026-09-26T00:00:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="sequential-architecture" name="Sequential Architecture">
+    <mxGraphModel dx="1400" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="title" />
+        <mxCell id="layer-1" parent="title" />
+
+        <mxCell id="userRequest" value="User Request" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="layer-1">
+          <mxGeometry x="40" y="80" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="outline" value="OutlineAgent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="layer-1">
+          <mxGeometry x="280" y="80" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="writer" value="WriterAgent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="layer-1">
+          <mxGeometry x="560" y="80" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="editor" value="EditorAgent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="layer-1">
+          <mxGeometry x="840" y="80" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="final" value="Final Blog Post" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="layer-1">
+          <mxGeometry x="1100" y="80" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow1" value="topic" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;endFill=1;fontSize=12;" edge="1" parent="layer-1" source="userRequest" target="outline">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow2" value="blog_outline" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;endFill=1;fontSize=12;" edge="1" parent="layer-1" source="outline" target="writer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow3" value="blog_draft" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;endFill=1;fontSize=12;" edge="1" parent="layer-1" source="writer" target="editor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4" value="final_blog" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;endFill=1;fontSize=12;" edge="1" parent="layer-1" source="editor" target="final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

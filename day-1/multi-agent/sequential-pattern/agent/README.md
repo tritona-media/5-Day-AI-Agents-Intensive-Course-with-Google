@@ -7,6 +7,8 @@ A sequential agent is created using the `google.adk.agents.SequentialAgent` clas
 
 This pattern is useful when a deterministic execution order is required, especially when each step depends on the previous step's output or when the workflow must follow a strict sequence.
 
+![Sequential architecture](./assets/sequential-architecture.svg)
+
 ## Agent Experiments
 [source file](./agent_experiment.py)
 
