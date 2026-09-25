@@ -34,12 +34,15 @@ python_code_agent = Agent(
 )
 
 python_code_review_agent = Agent(
-    name="PythonCodeReviewerAgent",
+    name="PythonCodeReviewAgent",
     model=Gemini(
         model="gemini-3.5-flash",
         retry_options=retry_config
     ),
-    instruction="""You are a Python code review agent.
+    instruction="""
+    Role:
+    You are a Python code review agent.
+    
     Goal:
     Review the following Python code and make it as concise and efficient as possible: 
     ---
@@ -61,7 +64,10 @@ root_agent = Agent(
         retry_options=retry_config
     ),
     # This instruction tells the root agent HOW to use its tools (which are the other agents).
-    instruction="""You are a Python code agent coordinator.
+    instruction="""
+    Role:
+    You are a Python code agent coordinator.
+    
     Goal:
     Produce a final, reviewed Python solution that matches the user's request.
 
