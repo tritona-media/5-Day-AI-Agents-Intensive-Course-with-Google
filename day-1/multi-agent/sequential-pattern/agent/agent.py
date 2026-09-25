@@ -4,6 +4,9 @@ from google.adk.agents import Agent, SequentialAgent
 from google.adk.models.google_llm import Gemini
 from google.adk.runners import InMemoryRunner
 from google.genai import types
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 retry_config=types.HttpRetryOptions(
     attempts=5,  # Maximum retry attempts
