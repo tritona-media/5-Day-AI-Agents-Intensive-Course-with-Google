@@ -1,4 +1,4 @@
-# Coordinator Architecture Pattern
+# Coordinator Agent Architecture Pattern
 
 ## Original Agent
 [source file](./agent.py)

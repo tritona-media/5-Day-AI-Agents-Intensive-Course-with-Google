@@ -1,4 +1,4 @@
-# Sequential Architecture Pattern
+# Sequential Agents Architecture Pattern
 
 ## Original Agent
 [source file](./agent.py)

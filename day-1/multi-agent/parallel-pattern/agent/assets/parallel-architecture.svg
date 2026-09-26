@@ -1,0 +1,75 @@
+<svg width="700" height="900" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Parallel Agent Architecture</title>
+  <desc id="desc">Vertical architecture showing a user request flowing to a sequential agent, then a parallel research team, then three research agents, and finally an aggregator producing the summary.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#666666" />
+    </marker>
+    <style>
+      .label { font: 600 14px Arial, sans-serif; fill: #333; }
+      .box-text { font: 700 18px Arial, sans-serif; fill: #1a1a1a; }
+      .user { fill: #f5f5f5; stroke: #666; stroke-width: 2; }
+      .sequential { fill: #e1d5e7; stroke: #9673a6; stroke-width: 2; }
+      .parallel { fill: #dae8fc; stroke: #6c8ebf; stroke-width: 2; }
+      .tech { fill: #d5e8d4; stroke: #82b366; stroke-width: 2; }
+      .health { fill: #fff2cc; stroke: #d6b656; stroke-width: 2; }
+      .finance { fill: #f8cecc; stroke: #b85450; stroke-width: 2; }
+      .aggregator { fill: #ffe6cc; stroke: #d79b00; stroke-width: 2; }
+      .final { fill: #f5f5f5; stroke: #666; stroke-width: 2; }
+      .link { stroke: #666666; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="240" y="30" width="220" height="80" rx="18" class="user"/>
+  <text x="350" y="76" text-anchor="middle" class="box-text">User Request</text>
+
+  <path d="M350 110 L350 150" class="link"/>
+  <text x="360" y="130" text-anchor="start" class="label">request</text>
+
+  <rect x="220" y="150" width="260" height="80" rx="18" class="sequential"/>
+  <text x="350" y="196" text-anchor="middle" class="box-text">ResearchSystem</text>
+  <text x="350" y="218" text-anchor="middle" class="label">(SequentialAgent)</text>
+
+  <path d="M350 230 L350 295" class="link"/>
+  <text x="360" y="260" text-anchor="start" class="label">run first</text>
+
+  <rect x="200" y="295" width="300" height="80" rx="18" class="parallel"/>
+  <text x="350" y="341" text-anchor="middle" class="box-text">ParallelResearchTeam</text>
+  <text x="350" y="363" text-anchor="middle" class="label">(ParallelAgent)</text>
+
+  <path d="M230 375 L170 430" class="link"/>
+  <text x="180" y="410" text-anchor="start" class="label">parallel</text>
+
+  <path d="M350 375 L350 430" class="link"/>
+  <text x="360" y="410" text-anchor="start" class="label">parallel</text>
+
+  <path d="M470 375 L555 430" class="link"/>
+  <text x="485" y="410" text-anchor="start" class="label">parallel</text>
+
+  <rect x="80" y="430" width="180" height="80" rx="18" class="tech"/>
+  <text x="170" y="476" text-anchor="middle" class="box-text">TechResearcher</text>
+
+  <rect x="260" y="430" width="190" height="80" rx="18" class="health"/>
+  <text x="355" y="476" text-anchor="middle" class="box-text">HealthResearcher</text>
+
+  <rect x="460" y="430" width="190" height="80" rx="18" class="finance"/>
+  <text x="555" y="476" text-anchor="middle" class="box-text">FinanceResearcher</text>
+
+  <path d="M170 510 L240 560" class="link"/>
+  <text x="175" y="545" text-anchor="start" class="label">results</text>
+
+  <path d="M355 510 L355 560" class="link"/>
+  <text x="365" y="545" text-anchor="start" class="label">results</text>
+
+  <path d="M555 510 L480 560" class="link"/>
+  <text x="500" y="545" text-anchor="start" class="label">results</text>
+
+  <rect x="220" y="560" width="260" height="80" rx="18" class="aggregator"/>
+  <text x="350" y="606" text-anchor="middle" class="box-text">AggregatorAgent</text>
+
+  <path d="M350 640 L350 700" class="link"/>
+  <text x="360" y="670" text-anchor="start" class="label">final summary</text>
+
+  <rect x="220" y="700" width="260" height="80" rx="18" class="final"/>
+  <text x="350" y="746" text-anchor="middle" class="box-text">Executive Summary</text>
+</svg>
