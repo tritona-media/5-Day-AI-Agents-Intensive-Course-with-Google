@@ -1,0 +1,75 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Loop Agent Architecture Pattern</title>
+  <desc id="desc">A top-down flow showing a sequential start, then a critic-refiner loop that repeats until the story is approved.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#555555"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #222; }
+      .label { font: 700 22px Arial, sans-serif; fill: #1f1f1f; }
+      .small { font: 600 16px Arial, sans-serif; fill: #444; }
+      .box { stroke-width: 2; rx: 18; ry: 18; }
+      .arrow { stroke: #555555; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .ellipse { stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="1500" fill="#ffffff"/>
+  <text x="600" y="60" text-anchor="middle" class="title">Loop Agent Architecture Pattern</text>
+
+  <rect x="470" y="110" width="260" height="90" rx="18" fill="#f1f3f4" stroke="#666666" class="box"/>
+  <text x="600" y="152" text-anchor="middle" class="label">User Request</text>
+
+  <rect x="425" y="250" width="350" height="100" rx="18" fill="#e1d5e7" stroke="#9673a6" class="box"/>
+  <text x="600" y="295" text-anchor="middle" class="label">Sequential Agent</text>
+  <text x="600" y="322" text-anchor="middle" class="small">Creates initial draft</text>
+
+  <rect x="460" y="410" width="280" height="100" rx="18" fill="#dae8fc" stroke="#6c8ebf" class="box"/>
+  <text x="600" y="455" text-anchor="middle" class="label">Writer Agent</text>
+  <text x="600" y="480" text-anchor="middle" class="small">Initial story draft</text>
+
+  <rect x="470" y="560" width="260" height="90" rx="18" fill="#d5e8d4" stroke="#82b366" class="box"/>
+  <text x="600" y="605" text-anchor="middle" class="label">Loop Agent</text>
+
+  <rect x="420" y="700" width="360" height="100" rx="18" fill="#fff2cc" stroke="#d6b656" class="box"/>
+  <text x="600" y="745" text-anchor="middle" class="label">Critic Agent</text>
+  <text x="600" y="772" text-anchor="middle" class="small">Provides feedback</text>
+
+  <rect x="410" y="870" width="380" height="100" rx="18" fill="#f8cecc" stroke="#b85450" class="box"/>
+  <text x="600" y="915" text-anchor="middle" class="label">Refiner Agent</text>
+  <text x="600" y="942" text-anchor="middle" class="small">Rewrites the story</text>
+
+  <polygon points="600,1060 760,1135 600,1210 440,1135" fill="#ffe6cc" stroke="#d79b00" class="ellipse"/>
+  <text x="600" y="1135" text-anchor="middle" class="label">Critic Approves?</text>
+
+  <ellipse cx="600" cy="1360" rx="170" ry="60" fill="#f5f5f5" stroke="#666666" class="ellipse"/>
+  <text x="600" y="1368" text-anchor="middle" class="label">Final Story</text>
+
+  <line x1="600" y1="200" x2="600" y2="250" class="arrow"/>
+  <text x="630" y="228" class="small">start</text>
+
+  <line x1="600" y1="350" x2="600" y2="410" class="arrow"/>
+  <text x="640" y="388" class="small">initial draft</text>
+
+  <line x1="600" y1="510" x2="600" y2="560" class="arrow"/>
+  <text x="640" y="542" class="small">pass to loop</text>
+
+  <line x1="600" y1="650" x2="600" y2="700" class="arrow"/>
+  <text x="643" y="680" class="small">draft</text>
+
+  <line x1="600" y1="800" x2="600" y2="870" class="arrow"/>
+  <text x="640" y="840" class="small">notes or approved</text>
+
+  <path d="M 440 1135 C 160 1135, 160 740, 420 740 L 420 740" class="arrow"/>
+  <text x="210" y="980" text-anchor="middle" class="small">No → send back to critic</text>
+
+  <line x1="600" y1="970" x2="600" y2="1060" class="arrow"/>
+  <text x="642" y="1020" class="small">critic decision</text>
+
+  <line x1="600" y1="1210" x2="600" y2="1300" class="arrow"/>
+  <text x="645" y="1260" class="small">Yes</text>
+
+  <text x="250" y="1220" class="small">The critic decides whether the revision is approved or whether it needs another round.</text>
+</svg>
