@@ -1,6 +1,6 @@
 # Day 2 - Agent Tools & Interoperability with Model Context Protocol (MCP)
 
-## Agent v1
+## Agent Custom Tools v1
 
 In this example, the currency agent is equipped with two tool functions: `get_fee_for_payment_method()` and `get_exchange_rate()`.
 
@@ -10,7 +10,7 @@ The agent's instructions clearly define when each tool should be used. From ther
 
 The tool functions should include a clear docstring that explains what they do, what they return, and their parameters in detail. Including a few examples also helps the agent understand them more clearly.
 
-## Agent v2
+## Agent Custom Tools v2
 
 In the first version of the agent, the language model handled the final calculation. This is not ideal because LMs are not reliable at arithmetic. They are probabilistic systems that predict the next likely token rather than perform precise computation.
 
@@ -21,3 +21,18 @@ For this version, the agent is instructed to generate Python code only. That cod
 The `enhanced_currency_agent` acts as an orchestrator. It first calls the tool functions to retrieve the fee percentage and exchange rate, then builds a prompt for the `CalculationAgent` to generate Python code. That code is executed in a sandbox, and the orchestrator uses the result to produce the final summary.
 
 Every result from the tool calls and sub-agent calls is added to the context of the `enhanced_currency_agent`. With this information collected in one place, it can assemble a clear final summary.
+
+## Agent MCP Tools
+
+`google.adk.tools.mcp_tool.mcp_toolset.McpToolset` configures a connection between an agent and an MCP server, and exposes the server's tools to the agent. In this example, the server is the local npm package `@modelcontextprotocol/server-everything`, launched with `npx`. This development server provides many tools for testing MCP clients; we filter its tool list to just `getTinyImage` for this example.
+
+MCP servers can communicate over three methods:
+
+| Method | When to use it |
+| --- | --- |
+| stdio | The MCP server runs as a local child process and communicates over standard input and output. Use this for local tools and development. |
+| SSE | Server-to-client only: the server streams events to the client, while client requests use a separate channel. Use this for remote servers that use the SSE transport. |
+| Streaming HTTP | Bidirectional: client and server can both send messages over the HTTP connection. Use this for remote servers using the newer Streamable HTTP transport. |
+
+We use `stdio` because `npx` launches the MCP server locally. The `McpToolset` is included in the agent's `tools` list, and the agent receives the prompt `Provide a sample tiny image`; it can call `getTinyImage` to generate the image.
+

@@ -2,3 +2,5 @@ google-adk
 dotenv
 vertexai
 google-cloud-aiplatform
+mcp
+IPython
