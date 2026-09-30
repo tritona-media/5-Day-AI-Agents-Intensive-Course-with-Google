@@ -36,3 +36,5 @@ MCP servers can communicate over three methods:
 
 We use `stdio` because `npx` launches the MCP server locally. The `McpToolset` is included in the agent's `tools` list, and the agent receives the prompt `Provide a sample tiny image`; it can call `getTinyImage` to generate the image.
 
+## Agent MCP Tools - Experiments
+The experiment sets up an MCP tool that fetches content from a URL and provides it to an agent. The agent uses the tool to retrieve the URL's content, then summarizes it concisely.
