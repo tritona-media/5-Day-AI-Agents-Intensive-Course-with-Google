@@ -38,3 +38,11 @@ We use `stdio` because `npx` launches the MCP server locally. The `McpToolset` i
 
 ## Agent MCP Tools - Experiments
 The experiment sets up an MCP tool that fetches content from a URL and provides it to an agent. The agent uses the tool to retrieve the URL's content, then summarizes it concisely.
+
+## Agent Human-In-The-Loop (Web)
+
+The shipping coordinator is an ADK app built around an `LlmAgent`, with resumability enabled so the interaction can pause while a human reviews a request and continue after a decision is submitted. The agent has a `place_shipping_order` tool that receives a `ToolContext`, which carries the human-in-the-loop confirmation state. Small orders are approved automatically; for larger orders, the tool requests confirmation and returns a pending-status dictionary. When the app resumes, the tool reads the confirmation from the context and returns a dictionary indicating whether the order was approved or rejected.
+
+## Agent Human-In-The-Loop (CLI)
+
+This command-line example demonstrates human approval using ADK concepts including sessions, runners, and events. The program creates a session, runs the agent, inspects its events for an approval request, and then resumes the same invocation with the human decision. Run the workflow from a Python shell; it prints the agent responses and approval outcome in the terminal.
