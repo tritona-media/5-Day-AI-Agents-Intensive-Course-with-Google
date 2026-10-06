@@ -46,3 +46,7 @@ The shipping coordinator is an ADK app built around an `LlmAgent`, with resumabi
 ## Agent Human-In-The-Loop (CLI)
 
 This command-line example demonstrates human approval using ADK concepts including sessions, runners, and events. The program creates a session, runs the agent, inspects its events for an approval request, and then resumes the same invocation with the human decision. Run the workflow from a Python shell; it prints the agent responses and approval outcome in the terminal.
+
+## Agent Human-In-The-Loop (CLI) - Experiment
+
+This experiment demonstrates how to add a human-in-the-loop approval step to an agent. The agent is given a custom `generate_images` function, not the MCP tool itself. The custom function requests confirmation through `ToolContext`; the ADK emits a separate confirmation-request event for the client to present to the user. The client sends its decision as a `FunctionResponse` matched to that request by its function-call ID, then resumes the same invocation using its invocation ID. If the user approves, the custom function calls the MCP tool and returns its result. The `pending` status returned while waiting is application-defined; it is not the ADK confirmation protocol.
