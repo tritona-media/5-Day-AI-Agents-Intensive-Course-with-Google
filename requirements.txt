@@ -1,5 +1,6 @@
 google-adk
 google-adk[db]
+sqlalchemy[asyncio]
 dotenv
 vertexai
 google-cloud-aiplatform
