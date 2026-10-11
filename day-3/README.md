@@ -2,15 +2,21 @@
 
 ## Agent with In-Memory Session
 
+Source: [agent.py](./agent-sessions/agent/agent.py)
+
 The runner is given an instance of `InMemorySessionService`, which stores session data temporarily in memory. A session is created manually outside the runner through the session service. When calling `runner.run_async`, pass both the user ID and the session ID; the runner uses the session service to find the corresponding session. If the runner cannot find that session ID, it raises an error rather than creating a new session automatically.
 
 One user can have multiple sessions, so each run must identify both the user and the specific session. A session contains the conversation history as events in chronological order. In the example, the agent remembers the user's name from an earlier exchange because the next turn uses the same session ID.
 
 ## Agent with In-Memory Session - Experiment
 
+Source: [agent_experiment.py](./agent-sessions/agent/agent_experiment.py)
+
 If you use a different session ID for each user prompt, the agent forgets your name between prompts. This demonstrates that the agent can remember information only within a session.
 
 ## Agent with Persistent Session
+
+Source: [agent.py](./agent-persistent-sessions/agent/agent.py)
 
 The persistent-session example uses a local SQLite database to save session data between runs. Unlike an in-memory session, this data remains available after the runner exits. The database can be opened with a SQLite viewer to inspect its tables, including the stream of events recorded for a session.
 
@@ -19,6 +25,8 @@ When the runner is restarted with the same database URL and session ID (and the 
 The event stream belongs to a specific session, so separate session IDs have isolated histories. If you start another session with a different ID, its event stream does not include the earlier conversation, and the agent will not know your name until you tell it again. This demonstrates that sessions are isolated from one another.
 
 ## Agent with Context Compaction
+
+Source: [agent.py](./agent-context-compaction/agent/agent.py)
 
 Long conversations can exceed the amount of history that is practical to send
 to a model on every turn. ADK event compaction addresses this by summarizing
@@ -82,3 +90,27 @@ repeated prompt prefixes; others require explicitly creating or referencing a
 cached prompt. Check the provider's rules for eligibility, minimum prompt size,
 cache lifetime, and billing, and verify the response metadata to confirm that
 the request actually used the cache.
+
+## Agent with Session State
+
+Source: [agent.py](./agent-session-state/agent/agent.py)
+
+The event history records the conversation and tool activity. Session state is
+a structured key-value store for information an agent or its tools need to
+access directly, such as a user's name or the current step of a workflow. It
+complements the event history rather than replacing it.
+
+A tool can read or update state through the `tool_context` parameter ADK
+provides when it calls the tool. In the example, `save_userinfo` writes the
+user's name and country to `tool_context.state`, and `retrieve_userinfo` reads
+them back on a later turn. ADK tracks these updates through its event handling,
+so tools should use `tool_context.state` rather than directly modifying a
+`Session` object's state outside an agent invocation.
+
+Use a scope prefix followed by a colon when a key is temporary, user-scoped,
+or app-scoped: `temp:key` is limited to the current invocation, `user:key` is
+shared across sessions for the same user, and `app:key` is shared across users
+and sessions in the same app. Keys without a prefix, such as `current_step`,
+belong to the current session. State persistence also depends on the session
+service; this example uses `InMemorySessionService`, so the values are lost
+when the process ends.
