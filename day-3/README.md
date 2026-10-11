@@ -60,3 +60,25 @@ example, that means an additional Gemini model request may be made for
 compaction, in addition to the normal response request. That request is billed
 according to the configured provider, credentials, and project/account; it is
 not a local, cost-free operation.
+
+## Agent with Context Caching
+
+The system prompt is included in the model request on every turn. For a long
+system prompt that stays the same across turns, the inference provider may be
+able to reuse the computation it has already done for that prompt instead of
+processing the same prefix from scratch. This is context caching. It can reduce
+the repeated work (and, depending on the provider, cost or latency), but the
+prompt still needs to be part of each request.
+
+You can check whether caching is being used by inspecting the model response
+metadata. Providers may report cache-related fields such as the number of
+tokens read from cache or a cached-content identifier. The field names and
+meaning vary by provider, so consult the metadata returned by the model and the
+provider's documentation rather than assuming that caching occurred.
+
+Whether caching must be enabled manually depends on the inference provider and
+the kind of caching it offers. Some providers automatically cache eligible
+repeated prompt prefixes; others require explicitly creating or referencing a
+cached prompt. Check the provider's rules for eligibility, minimum prompt size,
+cache lifetime, and billing, and verify the response metadata to confirm that
+the request actually used the cache.
