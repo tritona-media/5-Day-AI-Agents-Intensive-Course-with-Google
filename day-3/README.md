@@ -130,3 +130,34 @@ Only the agent can access the long-term memory through the predefined `load_memo
 A different pattern is `preload_memory`, which loads all available memory into the context for every turn. That is useful when you want the model to always see the long-term facts, but it can add more context and increase prompt size. In contrast, `load_memory` gives the agent a more targeted, decision-based approach.
 
 In the example, the agent is initialized with `tools=[load_memory]`, so it can decide when it needs to recall earlier information. For example, after the first session records that the user likes a certain color or has a birthday, the developer explicitly adds that session to memory and then opens a different session; the agent can answer questions using the stored long-term facts without needing the earlier conversation to still be active.
+
+## Agent with Automated Memory
+
+Source: [agent.py](./agent-automated-memory/agent/agent.py)
+
+Automated memory is a way to keep the long-term memory store updated without manually calling the memory service in each script. Instead of writing a custom step after every turn, the agent can register a callback hook that runs automatically as part of the agent lifecycle.
+
+In this example, the agent defines an `after_agent_callback` named `auto_save_to_memory`. That hook runs after the agent finishes processing a turn and then calls:
+
+```python
+await callback_context._invocation_context.memory_service.add_session_to_memory(
+    callback_context._invocation_context.session
+)
+```
+
+This means the current session is automatically written into the shared memory service at the end of each turn. The effect is that useful facts are retained without the developer needing to remember to call `memory_service.add_session_to_memory(session)` manually after every interaction.
+
+The agent also attaches `preload_memory` to its tools list. With that configuration, the model receives the long-term memory context on every turn, so it can answer from previously stored facts even when the new prompt happens in a different session. This is useful for cross-session continuity, but it also means the prompt becomes larger because long-term memory is loaded each time.
+
+ADK exposes several callback hooks that can be plugged into an agent lifecycle. Common examples include:
+
+- `before_agent_callback`: runs before the agent begins work
+- `after_agent_callback`: runs after the agent completes the turn
+- `before_model_callback`: runs before the model request is sent
+- `after_model_callback`: runs after the model responds
+- `before_tool_callback`: runs before a tool is invoked
+- `after_tool_callback`: runs after a tool finishes
+
+These hooks are useful for monitoring, enrichment, validation, or automatic persistence. In the automated memory example, the `after_agent_callback` is the key hook because it turns a normal conversation step into a memory-saving event without explicit application code after every run.
+
+The result is a simple pattern: the agent responds, the hook saves the conversation into memory, and future sessions can use that memory to answer questions with context that was previously gathered in another chat.
