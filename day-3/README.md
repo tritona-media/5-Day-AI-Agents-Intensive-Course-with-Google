@@ -114,3 +114,19 @@ and sessions in the same app. Keys without a prefix, such as `current_step`,
 belong to the current session. State persistence also depends on the session
 service; this example uses `InMemorySessionService`, so the values are lost
 when the process ends.
+
+## Agent with Memory
+
+Source: [agent.py](./agent-memory-workflow/agent/agent.py)
+
+An agent can have both a short-term and a long-term memory. The short-term memory is the active session: it stores the current conversation history and the recent events that belong to a specific session ID. This is useful for continuity within one chat thread, but it is isolated per session.
+
+The long-term memory is a shared memory store that lives outside any single session. It is intended for important facts about the user that should persist across conversations, such as preferences, personal details, or recurring context. In this example, the memory service is created with `InMemoryMemoryService()`, so it is still in-memory for local testing, but it is shared across all sessions for the same app.
+
+The important part is that facts do not automatically move from the current session into the long-term memory. The transfer must be manually triggered with `memory_service.add_session_to_memory(session)`. This lets the developer decide which session events should become durable memory. Once added, those facts can be reused in future sessions.
+
+Only the agent can access the long-term memory through the predefined `load_memory` tool. This means the model decides on each turn whether it needs to look up prior context data before answering. The memory lookup is selective and on-demand, rather than always injected into the prompt.
+
+A different pattern is `preload_memory`, which loads all available memory into the context for every turn. That is useful when you want the model to always see the long-term facts, but it can add more context and increase prompt size. In contrast, `load_memory` gives the agent a more targeted, decision-based approach.
+
+In the example, the agent is initialized with `tools=[load_memory]`, so it can decide when it needs to recall earlier information. For example, after the first session records that the user likes a certain color or has a birthday, the developer explicitly adds that session to memory and then opens a different session; the agent can answer questions using the stored long-term facts without needing the earlier conversation to still be active.
